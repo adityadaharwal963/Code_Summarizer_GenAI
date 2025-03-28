@@ -31,6 +31,31 @@ conda env update -f environment.yml
 
 ---
 
+### Using venv (Alternative)
+
+#### 1. Create a Virtual Environment
+```bash
+python -m venv my_env
+```
+
+#### 2. Activate the Virtual Environment
+- **Linux/Mac:**
+```bash
+source my_env/bin/activate
+```
+- **Windows:**
+```bash
+my_env\Scripts\activate
+```
+
+#### 3. Install Required Packages
+```bash
+pip install -r requirements.txt
+```
+
+---
+---
+
 ## API Setup
 
 ### 6. Get Google Gemini API Key
@@ -50,6 +75,75 @@ flask run
 ```
 - The server will be live at `http://127.0.0.1:5000`.
 
---- 
+---
+
+## API Endpoints
+
+### 1. `/api/summary` (POST)
+
+- **Description:**  
+  Generates machine learning (ML) code and returns the phases with descriptions and code.
+
+- **Request Body:**
+```json
+{
+  "prompt": "string"
+}
+```
+
+- **Response:**
+```json
+{
+  "phases": [
+    {
+      "phase": "Phase Name",
+      "description": "Description of the phase",
+      "code": "Generated code"
+    }
+  ]
+}
+```
+
+---
+
+### 2. `/api/generate` (POST)
+
+- **Description:**  
+  Generates output based on the provided input.
+
+- **Request Body:**
+```json
+{
+  "prompt": "string"
+}
+```
+
+- **Response:**
+```json
+{
+  "output": "Generated result based on input"
+}
+```
+
+---
+
+### 3. `/api/models` (GET)
+
+- **Description:**  
+  Returns available models.
+
+- **Request Body:**  
+  (No body required for `GET` requests)
+
+- **Response:**
+```json
+{
+  "models": [
+    "model_1",
+    "model_2",
+    "model_3"
+  ]
+}
+```
 
 
