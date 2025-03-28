@@ -5,8 +5,8 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository_link>
-cd <repository_name>
+git clone https://github.com/adityadaharwal963/Code_Summarizer_GenAI.git
+cd Code_Summarizer_GenAI
 ```
 
 ### 2. Create a New Conda Environment
