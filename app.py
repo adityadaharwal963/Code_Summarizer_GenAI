@@ -4,10 +4,12 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 from generateSummary import summary
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 # Configure your Gemini API key
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
@@ -18,6 +20,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 
 model = genai.GenerativeModel('gemini-2.0-flash-thinking-exp')
 
+@app.route('/')
 
 @app.route('/api/generate', methods=['POST'])
 def generate_text():
@@ -81,8 +84,12 @@ def get_summary():
     Endpoint to generate a structured summary of code using the Gemini API.
     """
     try:
+        print("in summary here:-")
+        print(request.get_json())
+        print("i---")
         data = request.get_json()
-        prompt = data.get('prompt')
+        prompt = data.get('code')
+        print(prompt)
 
         if not prompt:
             return jsonify({'error': 'Prompt is required'}), 400
